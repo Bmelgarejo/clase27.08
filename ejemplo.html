@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Materia</title>
+  </head>
+  <body>
+    <input class="materia1" type="number" min="0" max = "100" id = "primeraMateriaId" oninput="this.value = Math.abs(this.value)"> 
+    <input class="materia2" type="number" min="0" max = "100" id = "segundaMateriaId" oninput="this.value = Math.abs(this.value)"> 
+    <button id="validar" onclick="Validar()">Validar</button>
+    <label id="resultado"></label>
+  </body>
+</html>
+
+<script>
+
+function Validar() {
+    const primeraMateria = Number(document.getElementById("primeraMateriaId").value);
+    const segundaMateria = Number(document.getElementById("segundaMateriaId").value);
+    const resultadoElement = document.getElementById("resultado");
+
+    if (isNaN(primeraMateria) || isNaN(segundaMateria) || primeraMateria === "" || segundaMateria === "") {
+        resultadoElement.innerHTML = "Ingrese un valor";
+        return;
+    }
+
+    if (primeraMateria >= 100 || segundaMateria >= 100) {
+        resultadoElement.innerHTML = "El número máximo de estudiantes es 100";
+        return;
+    }
+
+    if (primeraMateria === segundaMateria) {
+        resultadoElement.innerHTML = "Las materias tienen la misma cantidad de estudiantes";
+    } else if (primeraMateria > segundaMateria) {
+        resultadoElement.innerHTML = "La primera materia tiene más estudiantes";
+    } else {
+        resultadoElement.innerHTML = "La segunda materia tiene más estudiantes";
+    }
+}
+
+
+</script>
